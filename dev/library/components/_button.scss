@@ -1,0 +1,36 @@
+@mixin btn($bg-color: #dedede) {
+    background-color: $bg-color;
+    padding: 20px 30px;
+    font-size: $font-lg;
+
+}
+
+.btn {
+    @include btn;
+}
+
+@each $key, $val in $colors {
+    .btn-#{$key} {
+        @include btn($val);
+        color: white;
+        &:hover {
+            background-color: lighten($val, 5)
+        }
+    }
+
+    .btn-outlined-#{$key} {
+        @include btn(#fff);
+        color: black;
+        border: 1px solid $val;
+    }
+
+    .btn-complement-#{$key} {
+        @include btn($val);
+        color: light-comp($val);
+        &:hover {
+            color: $val;
+            background-color: light-comp($val)
+
+        }
+    }
+}

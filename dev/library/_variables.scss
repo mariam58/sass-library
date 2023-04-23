@@ -1,0 +1,30 @@
+//theme colors
+$primary: blue !default;
+$secondary: green !default;
+
+//color palette
+$colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "yellow": yellow,
+);
+
+.test-btn {
+    background-color: map-get($colors, "yellow")
+}
+
+
+@debug map-get($colors, "secondary");
+@debug map-get($colors, "secondary");
+
+//fonts size
+$font-sm: 12px;
+$font-lg: $font-sm * 2;
+
+$base-padding: 20px;
+$base-margin: 20px;
+$base-border-radius: 30px;
+//spacing - base padding; base margin;
+//box-shadow
+//borders
+

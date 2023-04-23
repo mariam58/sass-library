@@ -1,0 +1,15 @@
+@use 'sass:math';
+.card {
+    background-color: $primary;
+    padding: 20px;
+    border: 1px solid black;
+    .card-title {
+        color: $secondary;
+        font-size: math.div($font-lg, 2);
+    }
+    .card-text {
+        font-size: $font-sm;
+    }
+}
+
+// @debug math.div(10,3);

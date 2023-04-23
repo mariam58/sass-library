@@ -1,0 +1,103 @@
+@use 'sass:math';
+
+$utilities: (
+    "padding": (
+        "prefix": "p",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 3,
+            "4": $base-padding * 4,
+            
+        ),
+    ),
+    "padding-left": (
+        "prefix": "pl",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 3,
+            "4": $base-padding * 4,
+            
+        ),
+    ),
+    // "padding-right": (),
+    // "padding-top": (),
+    // "padding-bottom": (),
+    // "margin": (),
+    // "margin-left": (),
+    // "margin-right": (),
+    "margin-top": (
+        "prefix": "mt",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 3,
+            "4": $base-margin * 4,
+            
+        ),
+    ),
+    // "margin-bottom": (),
+    "opacity": (
+        "prefix": "o",
+        "values": (
+            "10": 0.1,
+            "20": 0.2,
+            "30": 0.3,
+            "90": 0.9,
+            "100": 1,
+        )
+    ),
+    "border-radius": (
+        "prefix": "br",
+        "values": (
+            "default": $base-border-radius,
+            "none": 0,
+            "xs": math.div($base-border-radius, 4),
+            "sm": math.div($base-border-radius, 2),
+            "lg": $base-border-radius * 2,
+            "full": 50%,
+        )
+    ),
+    "display": (
+        "prefix": "display",
+        "values": (
+            "n": none,
+            "b": block,
+            "f": flex,
+            "i": inline,
+            "i-b": inline-block,
+        )
+    ),
+    "font-size": (
+        "prefix": "font",
+        "values": (
+            "sm": $font-sm,
+            "md": $font-sm * 2,
+            "lg": $font-sm * 3,
+
+        )
+    ),
+);
+
+//generate utility classes
+//$property is padding, padding-left, margin || map is ()
+@each $property, $map in $utilities {
+    $prefix: map-get($map, "prefix");
+    $values: map-get($map, "values");
+
+    @each $k, $v in $values {
+        @if($k=="default"){
+            .#{$prefix} {
+                #{$property}: $v;
+            }
+        }@else{
+            .#{$prefix}-#{$k} {
+                #{$property}: $v;
+            }
+        }
+    }
+}
